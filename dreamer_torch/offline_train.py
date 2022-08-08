@@ -1,8 +1,8 @@
-from dream_suture.dreamer import Dreamer, make_env, count_steps, make_dataset
+from dreamer_torch.dreamer import Dreamer, make_env, count_steps, make_dataset
 import argparse
 import pathlib
 import ruamel.yaml as yaml
-from dream_suture import tools
+from dreamer_torch import tools
 import sys
 import torch
 torch.cuda.empty_cache() 

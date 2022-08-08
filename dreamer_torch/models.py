@@ -3,8 +3,8 @@ from torch import nn
 import numpy as np
 from PIL import ImageColor, Image, ImageDraw, ImageFont
 
-import networks
-import tools
+from dreamer_torch import networks
+from dreamer_torch import tools
 to_np = lambda x: x.detach().cpu().numpy()
 
 

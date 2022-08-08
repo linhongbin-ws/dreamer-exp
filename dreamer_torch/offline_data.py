@@ -3,10 +3,10 @@ import functools
 import os
 import pathlib
 import sys
-from dreamer import count_steps, Dreamer
-import tools
-import wrappers
-import exploration
+from dreamer_torch.dreamer import count_steps, Dreamer
+from dreamer_torch import tools
+from dreamer_torch import wrappers
+from dreamer_torch import exploration
 import ruamel.yaml as yaml
 import torch
 import numpy as np

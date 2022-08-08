@@ -13,10 +13,10 @@ import ruamel.yaml as yaml
 
 sys.path.append(str(pathlib.Path(__file__).parent))
 
-import exploration as expl
-import models
-import tools
-import wrappers
+from dreamer_torch import exploration as expl
+from dreamer_torch import models
+from dreamer_torch import tools
+from dreamer_torch import wrappers
 
 import torch
 from torch import nn

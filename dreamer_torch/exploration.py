@@ -2,9 +2,9 @@ import torch
 from torch import nn
 from torch import distributions as torchd
 
-import models
-import networks
-import tools
+from dreamer_torch import models
+from dreamer_torch import networks
+from dreamer_torch import tools
 
 
 class Random(nn.Module):
