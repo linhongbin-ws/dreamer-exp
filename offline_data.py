@@ -3,10 +3,10 @@ import functools
 import os
 import pathlib
 import sys
-from dream_suture.dreamer import count_steps, Dreamer
-from dream_suture import tools
-from dream_suture import wrappers
-from dream_suture import exploration
+from dreamer import count_steps, Dreamer
+import tools
+import wrappers
+import exploration
 import ruamel.yaml as yaml
 import torch
 import numpy as np
@@ -15,7 +15,7 @@ from tqdm import tqdm
 import time
 
 def process_episode(config, directory, episode):
-    filenames = tools.save_episodes(directory, [episode], config.batch_length)
+    filenames = tools.save_episodes(directory, [episode])
 def count_eps(folder):
   return sum([1 for n in folder.glob('*.npz')])
 
@@ -89,7 +89,7 @@ def main(config, eps, savedir, seed, agent, reload_agent_param, mode='train'):
     env = wrappers.SelectAction(env, key='action')
     callbacks = [functools.partial(
             process_episode, config, traindir,)]
-    env = wrappers.CollectDataset(env, callbacks, batch_size = config.batch_length)
+    env = wrappers.CollectDataset(env, callbacks)
     env = wrappers.RewardObs(env)
     
     
@@ -132,7 +132,9 @@ def main(config, eps, savedir, seed, agent, reload_agent_param, mode='train'):
       tools.simulate(agent_func, train_envs, episodes=1)
       if i % reload_agent_param==0 and agent=='dreamer':
         agent_func = dreamer_agent_func(savedir, config, env)
-    env.close()
+    
+    if suite == 'ambf':
+      env.close()
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()

@@ -1,0 +1,1 @@
+python offline_data.py --eps 300 --configs defaults dmc --savedir ./data/dmc/

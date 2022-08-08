@@ -1,4 +1,4 @@
-source bash/usr/user_var.sh
+source bash/user_var_mod.sh
 pushd $GYM_SUTURE_PATH
 source bash/init.sh
 popd
