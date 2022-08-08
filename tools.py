@@ -205,12 +205,13 @@ def sample_episodes(episodes, length=None, balance=False, seed=0):
     yield episode
 
 
-def load_episodes(directory, limit=None, reverse=True):
+def load_episodes(directory, limit=None, reverse=True, subfolder=True):
   directory = pathlib.Path(directory).expanduser()
   episodes = {}
   total = 0
+  pattern = '**/*.npz' if subfolder else '*.npz'
   if reverse:
-    for filename in reversed(sorted(directory.glob('*.npz'))):
+    for filename in reversed(sorted(directory.glob(pattern))):
       try:
         with filename.open('rb') as f:
           episode = np.load(f)
@@ -223,7 +224,7 @@ def load_episodes(directory, limit=None, reverse=True):
       if limit and total >= limit:
         break
   else:
-    for filename in sorted(directory.glob('*.npz')):
+    for filename in sorted(directory.glob(pattern)):
       try:
         with filename.open('rb') as f:
           episode = np.load(f)
