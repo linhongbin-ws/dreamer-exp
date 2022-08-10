@@ -5,7 +5,7 @@ from torch import nn
 import torch.nn.functional as F
 from torch import distributions as torchd
 
-import tools
+from dreamer_torch import tools
 
 
 class RSSM(nn.Module):
